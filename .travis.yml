@@ -1,5 +1,7 @@
 sudo: false
-language: go
+language: python
+python:
+- "3.6"
 branches:
   only:
   - master
@@ -8,10 +10,15 @@ before_install:
   -in travis.pem.enc -out travis.pem -d
 - chmod 400 travis.pem
 install:
-- go get -v github.com/gohugoio/hugo
-script:
+- wget -qO- https://api.github.com/repos/gohugoio/hugo/releases/latest |
+  sed -r -n '/browser_download_url/{/Linux-64bit.deb/{s@[^:]*:[[:space:]]*"([^"]*)".*@\1@g;p}}' | 
+  xargs wget
+- sudo dpkg -i hugo*.deb
+- pip install Pygments
 - hugo version
-- rm -rf public
+- rm -rf public 2> /dev/null
+
+script:
 - hugo
 - rsync -avz -e "ssh -i travis.pem" --delete public/ root@139.224.129.61:/var/www/
 - ssh -i travis.pem root@139.224.129.61 "chown -R www-data:www-data /var/www"
