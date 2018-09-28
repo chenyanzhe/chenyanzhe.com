@@ -12,6 +12,9 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_2eeb5739b1e1_key -iv $encrypted_2eeb5739b1e1_iv
   -in travis.pem.enc -out travis.pem -d && chmod 400 travis.pem
 - mkdir -p content
+  # This workaround is required to avoid libstdc++ errors while running "extended" hugo with SASS support.
+- wget -q -O libstdc++6 http://security.ubuntu.com/ubuntu/pool/main/g/gcc-5/libstdc++6_5.4.0-6ubuntu1~16.04.10_amd64.deb
+- sudo dpkg --force-all -i libstdc++6
 
 install:
 - wget https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_extended_0.49_Linux-64bit.deb && sudo dpkg -i hugo*.deb && hugo version
