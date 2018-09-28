@@ -5,13 +5,17 @@ python:
 branches:
   only:
   - master
+addons:
+  ssh_known_hosts: 139.224.129.61
+
 before_install:
 - openssl aes-256-cbc -K $encrypted_2eeb5739b1e1_key -iv $encrypted_2eeb5739b1e1_iv
   -in travis.pem.enc -out travis.pem -d
 - chmod 400 travis.pem
+
 install:
-- wget -qO- https://api.github.com/repos/gohugoio/hugo/releases/latest | sed -r -n '/browser_download_url/{/Linux-64bit.deb/{s@[^:]*:[[:space:]]*"([^"]*)".*@\1@g;p}}' | xargs wget
-- sudo dpkg -i -f hugo*.deb
+- wget https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb
+- sudo dpkg -i hugo*.deb
 - pip install Pygments
 - hugo version
 - rm -rf public 2> /dev/null
@@ -20,5 +24,3 @@ script:
 - hugo
 - rsync -avz -e "ssh -i travis.pem" --delete public/ root@139.224.129.61:/var/www/
 - ssh -i travis.pem root@139.224.129.61 "chown -R www-data:www-data /var/www"
-addons:
-  ssh_known_hosts: 139.224.129.61
