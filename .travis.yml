@@ -1,26 +1,24 @@
 sudo: false
 language: python
 python:
-- "3.6"
+- '3.6'
 branches:
   only:
   - master
 addons:
   ssh_known_hosts: 139.224.129.61
-
 before_install:
 - openssl aes-256-cbc -K $encrypted_2eeb5739b1e1_key -iv $encrypted_2eeb5739b1e1_iv
   -in travis.pem.enc -out travis.pem -d && chmod 400 travis.pem
 - mkdir -p content
-  # This workaround is required to avoid libstdc++ errors while running "extended" hugo with SASS support.
 - sudo dpkg --force-all -i build/libstdc++6
-
 install:
 - build/hugo version
 - pip install Pygments
 - rm -rf public 2> /dev/null
-
 script:
-- build/hugo &&
-  rsync -avz -e "ssh -i travis.pem" --delete public/ root@139.224.129.61:/var/www/ &&
-  ssh -i travis.pem root@139.224.129.61 "chown -R www-data:www-data /var/www"
+- build/hugo && rsync -avz -e "ssh -i travis.pem" --delete public/ root@139.224.129.61:/var/www/
+  && ssh -i travis.pem root@139.224.129.61 "chown -R www-data:www-data /var/www"
+notifications:
+  slack:
+    secure: AfC3DF1y4eUrWZgw1FTpf4hwHxIBsinfYvIaWbyNYOhcMSyxl90DOOKwp5ljvFBntOV9FlPvc19Dk8+HpY1J5lVcjR7AWHZE73st2E3VA0fPC9smmCLqjwyhHoQhzjEMoz0Eaa1JFW4pjcNarn4+OPy7GOXthHxFGlaITWAbL04UbQOVNP7taloxlFCccvv0qw8af0IxxIql9lE+voOh1oAhRW7dSQ8g4H9/7Qyy8VFoC9cbq+NWB/Teu5u5VBXk0GVVfpVM/Ah/qxteIFhhgEz5mMBy5UVOVtV6qzxEfoHNknGm/wIpnj8A+yO0OgFzkr2ikIv703T6L9Me4qL37o4z9ddTrqDSLHCouLo75ZEBI+EjynZ2XA+iGhHKy2B7XIGPo0Va8WrrT0QqYp2vtO7LqoNTtqNCItx0K3cj+/6EbGFK/25D/CRoJytd3K4sTSUmm4eKRS4fjjDwnun6+raqzSeojjYo27qLrsqABhRogFT1MLL7wBTKy++qSnDzuPZV5xrVe9kthD1xC8cp3lFF3OpQH/syprcGoaj+YgWFdfo0sizXNAHjeTG5mXpRi/0SaMhAlepOVCpqVdLRK21sOu2UmD+JaoThchDzXQ4NNdgRaR49yd1HMzOWDv4SfE+1qVYjsKGHsFkJtmYNfkMYZhHhdHgGNM7wswu3TiM=
