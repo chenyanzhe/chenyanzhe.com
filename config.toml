@@ -43,6 +43,7 @@ preserveTaxonomyNames = true
     since = 2017
     author = "Yanzhe Chen"                           # Author's name
     avatar = "/images/me/avatar.jpg"                 # Author's avatar
+    beian = "沪ICP备18037058号"                       # ICP主体备案号
     subtitle = "不积跬步，无以至千里"                   # Subtitle
     cdn_url = ""                                     # Base CDN URL
     home_mode = "" # post or other
