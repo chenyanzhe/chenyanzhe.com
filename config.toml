@@ -61,6 +61,6 @@ preserveTaxonomyNames = true
     GitHub = "chenyanzhe"
     Twitter = "yanzhe_chen"
     LinkedIn = "yanzhe-chen-9598a9a6"
-    Wechat = "/images/me/wechat.png"  # Wechat QRcode image
+    Wechat = "/images/me/wechat.jpeg"  # Wechat QRcode image
     Email   = "yanzhe.cn@gmail.com"
 
