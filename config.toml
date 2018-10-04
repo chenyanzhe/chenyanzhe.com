@@ -60,11 +60,7 @@ preserveTaxonomyNames = true
 [params.social]
     GitHub = "chenyanzhe"
     Twitter = "yanzhe_chen"
-    Email   = "xxoo"
-    Instagram = "xxoo"
+    LinkedIn = "yanzhe-chen-9598a9a6"
     Wechat = "/images/me/wechat.png"  # Wechat QRcode image
-    Facebook = "xxoo"
-    Telegram = "xxoo"
-    Dribbble = "xxoo"
-    Medium = "xxoo"
+    Email   = "yanzhe.cn@gmail.com"
 
