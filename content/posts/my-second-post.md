@@ -1,5 +1,5 @@
 ---
-title: "My Second Post"
+title: "第二篇博文"
 date: 2018-10-05
 categories: [development, publishing]
 tags: [hugo,content,static site generator]
