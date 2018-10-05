@@ -55,7 +55,7 @@ preserveTaxonomyNames = true
     beian = "沪ICP备18037058号"                        # ICP主体备案号
     baiduAnalytics = ""
 
-    license= '本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可'
+    license= 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.'
 
 [params.social]
     GitHub = "chenyanzhe"
