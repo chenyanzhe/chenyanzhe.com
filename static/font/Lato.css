@@ -2,21 +2,21 @@
   font-family: 'Lato';
   font-style: normal;
   font-weight: 300;
-  src: local('Lato Light'), local('Lato-Light'), url(http://cdn.chenyanzhe.com/font/Lato/Lato-Light.woff) format('woff'), url(http://cdn.chenyanzhe.com/font/Lato/Lato-Light.woff2) format('woff2'), url(http://cdn.chenyanzhe.com/font/Lato/Lato-Light.ttf) format('truetype');
+  src: local('Lato Light'), local('Lato-Light'), url(//cdn.chenyanzhe.com/font/Lato/Lato-Light.woff) format('woff'), url(//cdn.chenyanzhe.com/font/Lato/Lato-Light.woff2) format('woff2'), url(//cdn.chenyanzhe.com/font/Lato/Lato-Light.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  src: url(http://cdn.chenyanzhe.com/font/Lato/Lato-Regular.eot);
-  src: local('Lato Regular'), local('Lato-Regular'), local('Lato'), url(http://cdn.chenyanzhe.com/font/Lato/Lato-Regular.woff) format('woff'), url(http://cdn.chenyanzhe.com/font/Lato/Lato-Regular.woff2) format('woff2'), url(http://cdn.chenyanzhe.com/font/Lato/Lato-Regular.ttf) format('truetype'), url(http://cdn.chenyanzhe.com/font/Lato/Lato-Regular.svg#Lato) format('svg'), url(http://cdn.chenyanzhe.com/font/Lato/Lato-Regular.eot?#iefix) format('embedded-opentype');
+  src: url(//cdn.chenyanzhe.com/font/Lato/Lato-Regular.eot);
+  src: local('Lato Regular'), local('Lato-Regular'), local('Lato'), url(//cdn.chenyanzhe.com/font/Lato/Lato-Regular.woff) format('woff'), url(//cdn.chenyanzhe.com/font/Lato/Lato-Regular.woff2) format('woff2'), url(//cdn.chenyanzhe.com/font/Lato/Lato-Regular.ttf) format('truetype'), url(//cdn.chenyanzhe.com/font/Lato/Lato-Regular.svg#Lato) format('svg'), url(//cdn.chenyanzhe.com/font/Lato/Lato-Regular.eot?#iefix) format('embedded-opentype');
 }
 
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 900;
-  src: local('Lato Black'), local('Lato-Black'), url(http://cdn.chenyanzhe.com/font/Lato/Lato-Black.woff) format('woff'), url(http://cdn.chenyanzhe.com/font/Lato/Lato-Black.woff2) format('woff2'), url(http://cdn.chenyanzhe.com/font/Lato/Lato-Black.ttf) format('truetype');
+  src: local('Lato Black'), local('Lato-Black'), url(//cdn.chenyanzhe.com/font/Lato/Lato-Black.woff) format('woff'), url(//cdn.chenyanzhe.com/font/Lato/Lato-Black.woff2) format('woff2'), url(//cdn.chenyanzhe.com/font/Lato/Lato-Black.ttf) format('truetype');
 }
 
