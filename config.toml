@@ -20,28 +20,28 @@ preserveTaxonomyNames = true
 
 [menu]
   [[menu.main]]
-    name = "博客"
+    name = "Blog"
     url = "/posts/"
     weight = 1
 
   [[menu.main]]
-    name = "分类"
+    name = "Categories"
     url = "/categories/"
     weight = 2
 
   [[menu.main]]
-    name = "标签"
+    name = "Tags"
     url = "/tags/"
     weight = 3
 
   [[menu.main]]
-    name = "关于"
+    name = "About"
     url = "/about/"
     weight = 4
 
 [params]
     since = 2017
-    author = "陈彦哲"                                 # Author's name
+    author = "Yanzhe Chen"                                 # Author's name
     avatar = "/images/me/avatar.jpg"                 # Author's avatar
     subtitle = "不积跬步，无以至千里"                   # Subtitle
     cdn_url = ""                                     # Base CDN URL
@@ -55,7 +55,7 @@ preserveTaxonomyNames = true
     beian = "沪ICP备18037058号"                        # ICP主体备案号
     baiduAnalytics = ""
 
-    license= '本作品采用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>进行许可。'
+    license= 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.'
 
 [params.social]
     GitHub = "chenyanzhe"
@@ -64,3 +64,6 @@ preserveTaxonomyNames = true
     Wechat = "/images/me/wechat.jpeg"  # Wechat QRcode image
     Email   = "yanzhe.cn@gmail.com"
 
+[taxonomies]
+  category = "categories"
+  tag = "tags"
