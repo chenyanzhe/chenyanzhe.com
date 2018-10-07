@@ -18,11 +18,12 @@ install:
 - pip install Pygments
 - rm -rf public 2> /dev/null
 script:
+- until scp -i travis.pem root@139.224.129.61:/var/www/CHECKSUM CHECKSUM.remote >&/dev/null ; do touch CHECKSUM.remote ; done
 - HUGO_ENV=production build/hugo
 - rsync -avz -e "ssh -i travis.pem" --exclude-from 'build/rsync_exclude_list.conf' --delete public/ root@139.224.129.61:/var/www/
 - ssh -i travis.pem root@139.224.129.61 "chown -R www-data:www-data /var/www"
 - build/qshell account $QINIU_AK $QINIU_SK
-- build/qshell qupload build/qupload/static.conf
+- cmp - s static/CHECKSUM CHECKSUM.remote || build/qshell qupload build/qupload/static.conf
 - build/qshell qupload build/qupload/js.conf
 - build/qshell qupload build/qupload/css.conf
 notifications:

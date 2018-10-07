@@ -1,0 +1,6 @@
+#!/bin/bash
+# To generate a checksum for 'static' folder.
+find static -name '.DS_Store' -type f -delete
+rm -f static/CHECKSUM
+find static -type f -exec md5 -r {} \; | sort -k 2 | md5 -r > CHECKSUM
+mv CHECKSUM static/
