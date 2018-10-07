@@ -15,7 +15,7 @@ date: 2018-10-05
 本站目前采用[Hugo]生成，基于[LeaveIt]主题进行了定制，在此之前折腾过[Hexo]，[Octopress]，[Jekyll]等静态博客生成工具，
 [Hugo]的简洁高效从中脱颖而出。网站的所有页面都是基于[Markdown]创建，源文件可以在我的[Github][Repo]上找到。
 
-为了照顾国内的访问速度，整个博客托管在[阿里云]上，后台的Web服务器选择使用[Caddy]，内置的HTTPS功能省去不少麻烦。
+为了照顾国内的访问速度，整个博客托管在[阿里云]上，同时使用[七牛云]加速。后台的Web服务器选择使用[Caddy]，内置的HTTPS功能省去不少麻烦。
 DigitalOcean社区上有一篇[文章][Caddy-tutorial]很好的介绍了如何快速部署，新手可以参考。
 
 ## 关于版权
@@ -37,3 +37,4 @@ DigitalOcean社区上有一篇[文章][Caddy-tutorial]很好的介绍了如何�
 [阿里云]: https://www.aliyun.com
 [码农]: https://baike.baidu.com/item/%E7%A0%81%E5%86%9C/10262742
 [蛛丝马迹]: https://baike.baidu.com/item/%E8%9B%9B%E4%B8%9D%E9%A9%AC%E8%BF%B9/70714
+[七牛云]: https://qiniu.com

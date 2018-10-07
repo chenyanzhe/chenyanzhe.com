@@ -24,9 +24,9 @@ script:
 - ssh -i travis.pem root@139.224.129.61 "chown -R www-data:www-data /var/www"
 - build/qshell account $QINIU_AK $QINIU_SK
 - cat static/CHECKSUM && cat CHECKSUM.remote
-- cmp -s static/CHECKSUM CHECKSUM.remote || build/qshell qupload build/qupload/static.conf
-- build/qshell qupload build/qupload/js.conf
-- build/qshell qupload build/qupload/css.conf
+- cmp -s static/CHECKSUM CHECKSUM.remote || build/qshell qupload 4 build/qupload/static.conf
+- build/qshell qupload 4 build/qupload/js.conf
+- build/qshell qupload 4 build/qupload/css.conf
 notifications:
   slack:
     secure: AfC3DF1y4eUrWZgw1FTpf4hwHxIBsinfYvIaWbyNYOhcMSyxl90DOOKwp5ljvFBntOV9FlPvc19Dk8+HpY1J5lVcjR7AWHZE73st2E3VA0fPC9smmCLqjwyhHoQhzjEMoz0Eaa1JFW4pjcNarn4+OPy7GOXthHxFGlaITWAbL04UbQOVNP7taloxlFCccvv0qw8af0IxxIql9lE+voOh1oAhRW7dSQ8g4H9/7Qyy8VFoC9cbq+NWB/Teu5u5VBXk0GVVfpVM/Ah/qxteIFhhgEz5mMBy5UVOVtV6qzxEfoHNknGm/wIpnj8A+yO0OgFzkr2ikIv703T6L9Me4qL37o4z9ddTrqDSLHCouLo75ZEBI+EjynZ2XA+iGhHKy2B7XIGPo0Va8WrrT0QqYp2vtO7LqoNTtqNCItx0K3cj+/6EbGFK/25D/CRoJytd3K4sTSUmm4eKRS4fjjDwnun6+raqzSeojjYo27qLrsqABhRogFT1MLL7wBTKy++qSnDzuPZV5xrVe9kthD1xC8cp3lFF3OpQH/syprcGoaj+YgWFdfo0sizXNAHjeTG5mXpRi/0SaMhAlepOVCpqVdLRK21sOu2UmD+JaoThchDzXQ4NNdgRaR49yd1HMzOWDv4SfE+1qVYjsKGHsFkJtmYNfkMYZhHhdHgGNM7wswu3TiM=
