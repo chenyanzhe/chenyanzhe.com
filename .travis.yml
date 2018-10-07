@@ -10,15 +10,25 @@ addons:
   ssh_known_hosts: 139.224.129.61
 before_install:
 - openssl aes-256-cbc -K $encrypted_2eeb5739b1e1_key -iv $encrypted_2eeb5739b1e1_iv
-  -in travis.pem.enc -out travis.pem -d && chmod 400 travis.pem
+  -in travis.pem.enc -out travis.pem -d
+- chmod 400 travis.pem
 - sudo dpkg --force-all -i build/libstdc++6
 install:
 - build/hugo version
 - pip install Pygments
 - rm -rf public 2> /dev/null
 script:
-- build/hugo && rsync -avz -e "ssh -i travis.pem" --delete public/ root@139.224.129.61:/var/www/
-  && ssh -i travis.pem root@139.224.129.61 "chown -R www-data:www-data /var/www"
+- HUGO_ENV=production build/hugo
+- rsync -avz -e "ssh -i travis.pem" --exclude-from 'build/rsync_exclude_list.conf' --delete public/ root@139.224.129.61:/var/www/
+- ssh -i travis.pem root@139.224.129.61 "chown -R www-data:www-data /var/www"
+- build/qshell account $QINIU_AK $QINIU_SK
+- build/qshell qupload build/qupload/static.conf
+- build/qshell qupload build/qupload/js.conf
+- build/qshell qupload build/qupload/css.conf
 notifications:
   slack:
     secure: AfC3DF1y4eUrWZgw1FTpf4hwHxIBsinfYvIaWbyNYOhcMSyxl90DOOKwp5ljvFBntOV9FlPvc19Dk8+HpY1J5lVcjR7AWHZE73st2E3VA0fPC9smmCLqjwyhHoQhzjEMoz0Eaa1JFW4pjcNarn4+OPy7GOXthHxFGlaITWAbL04UbQOVNP7taloxlFCccvv0qw8af0IxxIql9lE+voOh1oAhRW7dSQ8g4H9/7Qyy8VFoC9cbq+NWB/Teu5u5VBXk0GVVfpVM/Ah/qxteIFhhgEz5mMBy5UVOVtV6qzxEfoHNknGm/wIpnj8A+yO0OgFzkr2ikIv703T6L9Me4qL37o4z9ddTrqDSLHCouLo75ZEBI+EjynZ2XA+iGhHKy2B7XIGPo0Va8WrrT0QqYp2vtO7LqoNTtqNCItx0K3cj+/6EbGFK/25D/CRoJytd3K4sTSUmm4eKRS4fjjDwnun6+raqzSeojjYo27qLrsqABhRogFT1MLL7wBTKy++qSnDzuPZV5xrVe9kthD1xC8cp3lFF3OpQH/syprcGoaj+YgWFdfo0sizXNAHjeTG5mXpRi/0SaMhAlepOVCpqVdLRK21sOu2UmD+JaoThchDzXQ4NNdgRaR49yd1HMzOWDv4SfE+1qVYjsKGHsFkJtmYNfkMYZhHhdHgGNM7wswu3TiM=
+env:
+  global:
+  - secure: ehYqvPnCHxXo33mVVSW/eb4cJJN5qtPIZCdiKaEFvNrzcjKJYgsz1IB1cJwVdyNkgBY75Giyqo4YL1Ik2+xI80wz+6WlayBttC7/BuLr0NZXdBTQ0mCt5K//lQOEUuvANunppxpwIxbHpK0I8vRxKJ58oztK04wAU7U5jgPi7UuU9r2LcvHuRUnAJoMYJ3Z1qXSnWSogmf8YknL0r2O+13QUuNJYuaO19MlgEqTzW1Nr3jktWheCYo1Ot2i9SQq8MtIQQ0EAqNMhs6VUOkWOMyNUvUIU9s9R/A6WIxsNnL/5BN46r+Ozm9hJr2p0nfvgRD1lXefw+wTZqdqMNI1WcOVTZwjI+NlRrftMSprHx61030FkdzDAxRZD5ldvIu6ixqreugusmj7Ki3gYX2ZBzBvA9AdY3DzephTq2SktEKbPfi+cFYzddYKn3sfxzpv6k5bO0BQuOpOfuicfTgVSO3S7ncuTOFkDFqjZ8rekLk+qUmJ3eckj/kbuklhfQg2Ht5hKZP1bakcxdSddeU3muLLqwB8DOK+/vBRbXX2o+3CPIQAfSn0qRZBzgODy1QKF4dHEzb9NJ5XDXv4JZ8mi4yCGtHgmTv5rsqP0XAobzg8+9Tz4YzFDLE0tnuu143mKxvQ1cAEda9b+bU31xZ4RM+Mg/ODwKBgyXHMZ2ykpU/U=
+  - secure: RNA6VDFxumjErG1aQ3nuNs5Lrne/2UhbjKRpgPcsI/eL0BaPvZYqEmzQteE5yJ08ueFvbfQba2XuQpjeBI4gwsFASxvTOyyexCCGSRGRjTqbPW9Jseoix2TU0rzKANoF7mezTYa/GX8guf3o9mDO8if0psMhL2gddncgArQmNGcVDMnl3vYKbf7Yk8gecgeMiH45xs0o9SYzwCpbjQs/dtwrXvPdD9tqSYnRgE3meeWGItnW0TDykSVcFzzyaTZygxXhtvSp5FaQ2WXMZp2gOd10y7nVYtLALLwSaGYP9P2Hb43GeX+P0foty1TVwYi4Q7dlcxxw6oNz2f5wXehd1zHjTwOZXTha/zVj3CIAz4K+DxXNSjMdSZsg4YaM+2cmAyPoi/mTZ9bWVAKBAV9/eARk00uMv8L7/M2vE43QFAdKEdprbrDHFtu1ziEuJqove0viPJOqSLP332Hv6F2GVFdMoi059nlPTkdHY8TzZ2rS5rN8Z5o2+s7P2qeC81bgFt6agnpP29fvfX0XVuJpxR8gY6BKMkP3Lvv1zDbvPxoJiQ2TjeUpKhllfg50wvmzCLCzoj7N+YzHqXTGLxB8yKNUn0QOjNhipcOG3DHWZEjvPrStND2lXa1ZJ1FQIDBX+NjlIlpSpdklHSvruGRwwD7xlM5pOZAqaxXPgiC6Hak=

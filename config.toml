@@ -41,18 +41,18 @@ preserveTaxonomyNames = true
 
 [params]
     since = 2017
-    author = "Yanzhe Chen"                                 # Author's name
-    avatar = "/images/me/avatar.jpg"                 # Author's avatar
-    subtitle = "不积跬步，无以至千里"                   # Subtitle
-    cdn_url = ""                                     # Base CDN URL
-    home_mode = "" # post or other
+    author = "Yanzhe Chen"
+    avatar = "/images/me/avatar.jpg"
+    subtitle = "不积跬步，无以至千里"
+    cdn_url = "https://cdn.chenyanzhe.com"
+    home_mode = ""
 
     google_verification = ""
    
-    description = "" # site description
-    keywords = "" # site keywords
+    description = "Yanzhe's Homepage"
+    keywords = ""
 
-    beian = "沪ICP备18037058号"                        # ICP主体备案号
+    beian = "沪ICP备18037058号"
     baiduAnalytics = ""
 
     license= 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.'
@@ -61,9 +61,5 @@ preserveTaxonomyNames = true
     GitHub = "chenyanzhe"
     Twitter = "yanzhe_chen"
     LinkedIn = "yanzhe-chen-9598a9a6"
-    Wechat = "/images/me/wechat.jpeg"  # Wechat QRcode image
+    Wechat = "/images/me/wechat.jpeg"
     Email   = "yanzhe.cn@gmail.com"
-
-[taxonomies]
-  category = "categories"
-  tag = "tags"
