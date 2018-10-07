@@ -18,7 +18,7 @@ install:
 - pip install Pygments
 - rm -rf public 2> /dev/null
 script:
-- scp -i aliyun.pem root@139.224.129.61:/var/www/CHECKSUM CHECKSUM.remote >&/dev/null || touch CHECKSUM.remote
+- scp -i travis.pem root@139.224.129.61:/var/www/CHECKSUM CHECKSUM.remote >&/dev/null || touch CHECKSUM.remote
 - HUGO_ENV=production build/hugo
 - rsync -avz -e "ssh -i travis.pem" --exclude-from 'build/rsync_exclude_list.conf' --delete public/ root@139.224.129.61:/var/www/
 - ssh -i travis.pem root@139.224.129.61 "chown -R www-data:www-data /var/www"
