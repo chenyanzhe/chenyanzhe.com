@@ -131,6 +131,12 @@ Reference-style:
 
 [图标]: /favicon-32x32.png "标题2"
 
+## Footnotes
+
+This is a footnote.[^1]
+
+[^1]: The footnote text.
+
 ## Code and Syntax Highlighting 代码及语法高亮
 
 Inline `code` has `back-ticks around` it.
